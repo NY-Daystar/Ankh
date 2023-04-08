@@ -1,13 +1,13 @@
 # Ânkh
 
-[![Ânkh-CI](https://github.com/LucasNoga/ankh/actions/workflows/dotnet.yml/badge.svg)](https://github.com/NY-Daystar/Ankh/actions/workflows/dotnet.yml)
+[![Ânkh-CI](https://github.com/NY-Daystar/ankh/actions/workflows/dotnet.yml/badge.svg?branch=main)](https://github.com/NY-Daystar/Ankh/actions/workflows/dotnet.yml)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Version](https://img.shields.io/github/tag/NY-Daystar/ankh.svg)](https://github.com/NY-Daystar/Ankh/releases)
-[![Total views](https://img.shields.io/sourcegraph/rrc/github.com/LucasNoga/ankh.svg)](https://sourcegraph.com/github.com/NY-Daystar/ankh)
-https://github.com/NY-Daystar/Ankh/tags
+[![Total views](https://img.shields.io/sourcegraph/rrc/github.com/NY-Daystar/ankh.svg)](https://sourcegraph.com/github.com/NY-Daystar/ankh)
+
 C# project to rename every files in folder quickly
 
-**\_Version: v1.0.0**
+**Version: v1.0.0**
 
 ## Summary
 
