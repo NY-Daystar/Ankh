@@ -1,4 +1,6 @@
-﻿namespace Ânkh
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace Ânkh
 {
     /// <summary>
     /// Mainframe of the program
@@ -7,9 +9,12 @@
     {
         private static readonly string _application = "Ânkh";
 
+        private static readonly string _version = "1.0.0";
+
         public static void Main()
         {
-            Utils.WriteLine("Welcome to ", ConsoleColor.Yellow, _application, ConsoleColor.White);
+            Utils.WriteLine("Welcome to ", ConsoleColor.Yellow, _application, ConsoleColor.White,
+                " - Version : ", ConsoleColor.Yellow, _version, ConsoleColor.White);
             Console.WriteLine("This program allows you to rename files in folder quickly\n");
             Console.WriteLine("---------------------");
 

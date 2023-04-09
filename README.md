@@ -5,7 +5,9 @@
 [![Version](https://img.shields.io/github/tag/NY-Daystar/ankh.svg)](https://github.com/NY-Daystar/Ankh/releases)
 [![Total views](https://img.shields.io/sourcegraph/rrc/github.com/NY-Daystar/ankh.svg)](https://sourcegraph.com/github.com/NY-Daystar/ankh)
 
-C# project to rename every files in folder quickly
+C# project to rename every files in folder quickly.
+
+[Installation Setup realize with this tutorial](https://gaby277.developpez.com/Tutoriels/VisualStudioInstallerProject/)
 
 **Version: v1.0.0**
 
@@ -17,12 +19,12 @@ C# project to rename every files in folder quickly
 -   [Contact](#contact)
 -   [Credits](#credits)
 
-To test on spotify there is some link
-
 ## Requirements
 
 -   [.NET Framework](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) >= 7.0
 -   For developpment: [VS 2022](https://visualstudio.microsoft.com/fr/vs/) >= 2022
+-   Packages to install
+    -   [ConsoleTables](https://www.nuget.org/packages/ConsoleTables/2.4.2?_src=template)
 
 ## How to use
 
@@ -50,8 +52,8 @@ $ git clone git@github.com:NY-Daystar/Ankh.git
 
 ## Contact
 
--   To make a pull request: https://github.com/LucasNoga/ankh/pulls
--   To summon an issue: https://github.com/LucasNoga/ankh/issues
+-   To make a pull request: https://github.com/NY-Daystar/ankh/pulls
+-   To summon an issue: https://github.com/NY-Daystar/ankh/issues
 -   For any specific demand by mail: [luc4snoga@gmail.com](mailto:luc4snoga@gmail.com?subject=[GitHub]%ankh%20Project)
 
 ## Credits
