@@ -52,7 +52,7 @@ namespace Ânkh
         /// </summary>
         /// <param name="files">Files to rename</param>
         /// <param name="template">Template to use to rename</param>
-        public void ApplyRegex(List<AnkhFile> files, string template)
+        public void ApplyRegex(IEnumerable<AnkhFile> files, string template)
         {
             foreach (AnkhFile file in files)
             {

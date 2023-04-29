@@ -23,14 +23,14 @@ namespace Ânkh
         /// Using ConsoleTables : https://github.com/khalidabuhakmeh/ConsoleTables
         /// </summary>
         /// <param name="files"></param>
-        public static void ShowFiles(List<AnkhFile> files)
+        public static void ShowFiles(IEnumerable<AnkhFile> files)
         {
             string[] headers = new string[] { "N°", "Name", };
 
             ConsoleTable table = new(headers);
             foreach (AnkhFile file in files)
             {
-                _ = table.AddRow(files.IndexOf(file), file.Name);
+                _ = table.AddRow(files.ToList().IndexOf(file), file.Name);
             }
 
             table.Write(Format.Minimal);
@@ -40,14 +40,14 @@ namespace Ânkh
         /// Display table to compare old file names with the new ones
         /// </summary>
         /// <param name="files">Files data to compare</param>
-        public static void CompareFiles(List<AnkhFile> files)
+        public static void CompareFiles(IEnumerable<AnkhFile> files)
         {
             string[] headers = new string[] { "N°", "Old Name", "New Name", };
 
             ConsoleTable table = new(headers);
             foreach (AnkhFile file in files)
             {
-                _ = table.AddRow(files.IndexOf(file), file.Name, file.NewName);
+                _ = table.AddRow(files.ToList().IndexOf(file), file.Name, file.NewName);
             }
 
             table.Write(Format.MarkDown);

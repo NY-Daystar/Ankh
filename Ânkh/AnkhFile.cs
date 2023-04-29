@@ -74,7 +74,7 @@
         /// </summary>
         /// <param name="filePaths">list of filePath</param>
         /// <returns></returns>
-        public static List<AnkhFile> Load(List<string> filePaths)
+        public static IEnumerable<AnkhFile> Load(IEnumerable<string> filePaths)
         {
             List<AnkhFile> ankhFiles = new();
 

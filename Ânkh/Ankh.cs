@@ -29,7 +29,7 @@ namespace Ânkh
             Console.WriteLine("---------------------");
 
             // 2 - Get all files on the directory
-            List<AnkhFile> files = AnkhIO.GetFiles(directory);
+            IEnumerable<AnkhFile> files = AnkhIO.GetFiles(directory);
 
             if (!files.Any())
             {

@@ -14,7 +14,7 @@ namespace Ânkh
         /// <returns>List of AnkhFile</returns>
         /// <exception cref="EmptyDirectoryException"></exception>
         /// <exception cref="DirectoryNotFoundException"></exception>
-        public static List<AnkhFile> GetFiles(string folder)
+        public static IEnumerable<AnkhFile> GetFiles(string folder)
         {
             if (folder == null)
             {
@@ -26,7 +26,7 @@ namespace Ânkh
                 throw new DirectoryNotFoundException();
             }
 
-            List<string> files = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly).ToList();
+            IEnumerable<string> files = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly).ToList();
 
             return AnkhFile.Load(files);
         }
@@ -35,7 +35,7 @@ namespace Ânkh
         /// Rename all files with new names
         /// </summary>
         /// <param name="files">AnkhFile list to rename</param>
-        public static void RenameFiles(List<AnkhFile> files)
+        public static void RenameFiles(IEnumerable<AnkhFile> files)
         {
             foreach (AnkhFile file in files)
             {
