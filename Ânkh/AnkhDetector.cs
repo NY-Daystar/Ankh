@@ -6,24 +6,20 @@ namespace Ânkh
     /// <summary>
     /// Handler for regex file
     /// </summary>
-    public class AnkhDetector
+    public partial class AnkhDetector
     {
-        /// <summary>
-        /// Regex to get number of file
-        /// </summary>
-        private readonly Regex _regex;
-
         /// <summary>
         /// match number to change file
         /// Default : 0
         /// </summary>
         private int _match;
 
-        public AnkhDetector()
-        {
-            const string pattern = "[0-9]{1,}";
-            _regex = new Regex(pattern);
-        }
+        /// <summary>
+        /// Regex to detect all numeric values in filename
+        /// </summary>
+        /// <returns></returns>
+        [GeneratedRegex("[0-9]{1,}")]
+        private static partial Regex NumericRegex();
 
         /// <summary>
         /// Setup regex from first file and get all matches
@@ -33,18 +29,18 @@ namespace Ânkh
         /// <exception cref="MatchRegexException"></exception>
         public void SetupRegex(AnkhFile file)
         {
-            MatchCollection matches = _regex.Matches(file.Name);
+            MatchCollection matches = NumericRegex().Matches(file.Name);
 
-            if (!matches.ElementAt(0).Success)
+            if (!matches[0].Success)
             {
                 throw new MatchRegexException(file);
             }
 
-            Utils.WriteLine($"List of matches from file: ", ConsoleColor.Yellow, $"'{file.Name}'", ConsoleColor.White);
+            Utils.WriteLine("List of matches from file: ", ConsoleColor.Yellow, $"'{file.Name}'", ConsoleColor.White);
 
             _match = validateMatch(matches);
 
-            Utils.WriteLine("You select this match : ", ConsoleColor.Yellow, $"'{matches.ElementAt(_match)}'", ConsoleColor.White);
+            Utils.WriteLine("You select this match : ", ConsoleColor.Yellow, $"'{matches[_match]}'", ConsoleColor.White);
         }
 
         /// <summary>
@@ -56,15 +52,8 @@ namespace Ânkh
         {
             foreach (AnkhFile file in files)
             {
-                try
-                {
-                    string number = int.Parse(_regex.Matches(file.Name).ElementAt(_match).Value).ToString();
-                    file.NewName = $"{template} {number}";
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    Console.WriteLine($"Can't get number for this file: '{file.Name}'\n.Skip");
-                }
+                string number = NumericRegex().Matches(file.Name).ElementAt(_match).Value;
+                file.NewName = template + number;
             }
         }
 
@@ -73,11 +62,11 @@ namespace Ânkh
         /// </summary>
         /// <param name="matches">List of matches</param>
         /// <returns>int of the match</returns>
-        private int validateMatch(MatchCollection matches)
+        private static int validateMatch(MatchCollection matches)
         {
             Utils.ShowRegexPattern(matches);
 
-            return AnkhUser.askMatch(matches.Count()) - 1;
+            return AnkhUser.askMatch(matches.Count) - 1;
         }
     }
 }

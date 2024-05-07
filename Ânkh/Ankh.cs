@@ -1,15 +1,13 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-
-namespace Ânkh
+﻿namespace Ânkh
 {
     /// <summary>
     /// Mainframe of the program
     /// </summary>
     internal static class Ankh
     {
-        private static readonly string _application = "Ânkh";
+        private const string _application = "Ânkh";
 
-        private static readonly string _version = "1.0.0";
+        private const string _version = "1.1.0";
 
         public static void Main()
         {
@@ -36,7 +34,7 @@ namespace Ânkh
                 Console.WriteLine($"No files in this directory : {directory}");
                 Exit();
             }
-            Utils.WriteLine($"Files from folder :", ConsoleColor.Yellow, directory, ConsoleColor.White);
+            Utils.WriteLine("Files from folder :", ConsoleColor.Yellow, directory, ConsoleColor.White);
             Utils.ShowFiles(files);
             Console.WriteLine("---------------------");
 
@@ -49,7 +47,7 @@ namespace Ânkh
             string template = AnkhUser.AskFileTemplate();
             if (string.IsNullOrEmpty(template))
             {
-                Console.WriteLine($"No template file set");
+                Console.WriteLine("No template file set");
                 Exit();
                 Environment.Exit(0);
             }
@@ -75,8 +73,8 @@ namespace Ânkh
             AnkhIO.RenameFiles(files);
 
             Console.WriteLine($"All files are renamed in {directory}");
-            Console.WriteLine("Exiting application in one minute");
-            Exit(60000);
+            Console.WriteLine("Exiting application in 15 seconds");
+            Exit(15000);
         }
 
         /// <summary>
