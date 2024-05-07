@@ -6,7 +6,7 @@
     public class AnkhFile
     {
         /// <summary>
-        /// Initial Data of the filepath with extension 
+        /// Initial Data of the filepath with extension
         /// </summary>
         private readonly string _filePath;
 
@@ -51,14 +51,29 @@
         public string FilePath => _directoryInfo.FullName;
 
         /// <summary>
+        /// Name and extension of file (only relative path)
+        /// </summary>
+        public string FullName => $"{Name}.{Extension}";
+
+        /// <summary>
+        /// extension of file without dot
+        /// </summary>
+        public string Extension => _extension.Replace(".", "");
+
+        /// <summary>
         /// New file name after applying regex
         /// </summary>
-        public string NewName = string.Empty;
+        public string NewName { get; set; }
 
         /// <summary>
         /// New file path after applying when renaming file
         /// </summary>
         public string NewFilePath => Path.Combine(_folder, NewName) + _extension;
+
+        /// <summary>
+        /// Name and extension of file after renamed (only relative path)
+        /// </summary>
+        public string NewFullName => $"{NewName}.{Extension}";
 
         /// <summary>
         /// Constructor to get all data of the file to rename
@@ -67,6 +82,7 @@
         public AnkhFile(string filePath)
         {
             _filePath = filePath;
+            NewName = string.Empty;
         }
 
         /// <summary>

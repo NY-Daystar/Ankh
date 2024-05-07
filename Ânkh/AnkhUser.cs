@@ -30,7 +30,7 @@
         /// <returns>The number of the good match to setup new files names</returns>
         public static int askMatch(int range)
         {
-            do
+            while (true)
             {
                 Console.Write($"Select the appropriate match between (1/{range}) : ");
                 string userLine = Console.ReadLine() ?? string.Empty;
@@ -44,9 +44,8 @@
                 {
                     Console.Write($"\nYou type '{match}'. Please ");
                 }
-            } while (true);
+            }
         }
-
 
         /// <summary>
         /// Ask in Console user confirmation (y or n)
@@ -55,7 +54,7 @@
         public static bool AskConfirmation()
         {
             Console.Write("Do you want to proceed (y/N) : ");
-            do
+            while (true)
             {
                 char key = Console.ReadKey().KeyChar;
 
@@ -73,7 +72,7 @@
                 {
                     Console.WriteLine($"\nYou type '{key}'. Please choose 'y' (Yes) or 'n' (No)");
                 }
-            } while (true);
+            }
         }
     }
 }

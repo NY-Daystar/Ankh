@@ -1,4 +1,4 @@
-﻿using ConsoleTables;
+using ConsoleTables;
 using System.Text.RegularExpressions;
 
 namespace Ânkh
@@ -30,7 +30,7 @@ namespace Ânkh
             ConsoleTable table = new(headers);
             foreach (AnkhFile file in files)
             {
-                _ = table.AddRow(files.ToList().IndexOf(file), file.Name);
+                _ = table.AddRow(files.ToList().IndexOf(file), file.FullName);
             }
 
             table.Write(Format.Minimal);
@@ -47,7 +47,7 @@ namespace Ânkh
             ConsoleTable table = new(headers);
             foreach (AnkhFile file in files)
             {
-                _ = table.AddRow(files.ToList().IndexOf(file), file.Name, file.NewName);
+                _ = table.AddRow(files.ToList().IndexOf(file), file.FullName, file.NewFullName);
             }
 
             table.Write(Format.MarkDown);
@@ -59,12 +59,11 @@ namespace Ânkh
         /// <param name="matches">list of pattern matches</param>
         public static void ShowRegexPattern(MatchCollection matches)
         {
-
             string[] headers = new string[] { "N°", "Pattern", };
 
             ConsoleTable table = new(headers);
 
-            for (int idx = 0; idx < matches.Count(); idx++)
+            for (int idx = 0; idx < matches.Count; idx++)
             {
                 int id = idx + 1;
                 Match match = matches[idx];
@@ -85,9 +84,9 @@ namespace Ânkh
                 {
                     Console.ResetColor();
                 }
-                else if (o is ConsoleColor)
+                else if (o is ConsoleColor consoleColor)
                 {
-                    Console.ForegroundColor = (ConsoleColor)o;
+                    Console.ForegroundColor = consoleColor;
                 }
                 else
                 {
