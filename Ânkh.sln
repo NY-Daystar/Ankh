@@ -13,6 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ÂnkhSetup", "ÂnkhSetup\ÂnkhSetup.vdproj", "{E53C5A8B-6B1B-4AB8-8FE6-33E29FF480A0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assets", "Assets", "{409F1C0A-4BE1-472A-AA8B-BA867065C9F2}"
+	ProjectSection(SolutionItems) = preProject
+		Assets\Ankh program.png = Assets\Ankh program.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +35,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{409F1C0A-4BE1-472A-AA8B-BA867065C9F2} = {7F555769-2653-4E25-AAF9-F3BFE23DE820}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {03C47806-7F52-4B36-9D2C-4DD54A5E5C73}

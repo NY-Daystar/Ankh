@@ -52,10 +52,28 @@ Source code analysed with [DeepSource](https://deepsource.com/)
 
 2. Extract zip on your computer
 
-3. Launch `Ânkh.exe`
-    - The project ask you to choose a folder in your computer to rename files.
-    - It will list folder files and submit several renaming.
-    - After choosing one the application rename files automatically
+> Let's say you want to numerate files from a folder in a numeric order  
+> Example:
+
+```
+One.Piece.S01E001.VOSTFR.DVDRip.x264.mp4
+One.Piece.S01E002.VOSTFR.DVDRip.x264.mp4
+One.Piece.S01E003.VOSTFR.DVDRip.x264.mp4
+...
+```
+
+And you want
+
+```
+One Piece S01E1.mp4
+One Piece S01E2.mp4
+One Piece S01E3.mp4
+...
+```
+
+3. Launch `Ânkh.exe` - The project ask you to choose a folder in your computer to rename files. - It will list folder files and submit several renaming. - After choosing one the application rename files automatically
+
+![Ânkh program](./Assets/Ankh%20program.png)
 
 ## Setup project
 
