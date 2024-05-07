@@ -71,12 +71,8 @@ public partial class AnkhDetector
     /// <returns>int of the match</returns>
     private static int validateMatch(MatchCollection matches)
     {
-        while (true)
-        {
-            Utils.ShowRegexPattern(matches);
-            int choice = 0;
-            return AnkhUser.askMatch(matches.Count) - 1;
-        }
+        Utils.ShowRegexPattern(matches);
+        return AnkhUser.askMatch(matches.Count) - 1;
     }
 
     /// <summary>
