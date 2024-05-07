@@ -1,4 +1,5 @@
 ﻿using Ânkh.Exceptions;
+using System.Text.RegularExpressions;
 
 namespace Ânkh
 {
@@ -26,7 +27,10 @@ namespace Ânkh
                 throw new DirectoryNotFoundException();
             }
 
-            IEnumerable<string> files = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly).ToList();
+            IEnumerable<string> files = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly);
+
+            // Order in natural number
+            files = files.OrderBy(file => Regex.Replace(file, @"\d+", match => match.Value.PadLeft(4, '0')));
 
             return AnkhFile.Load(files);
         }
