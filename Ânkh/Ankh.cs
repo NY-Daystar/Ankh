@@ -44,7 +44,7 @@
             Console.WriteLine("---------------------");
 
             // 4 - Ask the new file template to rename all files
-            string template = AnkhUser.AskFileTemplate();
+            string template = AnkhUser.AskFileTemplate(detector.Prefix);
             if (string.IsNullOrEmpty(template))
             {
                 Console.WriteLine("No template file set");

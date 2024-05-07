@@ -33,7 +33,7 @@ namespace Ânkh
                 _ = table.AddRow(files.ToList().IndexOf(file), file.FullName);
             }
 
-            table.Write(Format.Minimal);
+            table.Write(Format.MarkDown);
         }
 
         /// <summary>

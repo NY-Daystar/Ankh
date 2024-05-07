@@ -14,13 +14,15 @@
         }
 
         /// <summary>
-        /// Ask in Console the new file template
+        /// Ask in Console the new file template and get default one
         /// </summary>
         /// <returns>template of file</returns>
-        public static string AskFileTemplate()
+        public static string AskFileTemplate(string template)
         {
-            Console.Write("Enter the file template to set : ");
+            Console.Write($"Enter the file template to set [default: '{template}']: ");
             string fileTemplate = Console.ReadLine() ?? string.Empty;
+            if (string.IsNullOrEmpty(fileTemplate))
+                return template;
             return Utils.EscapeQuotes(fileTemplate);
         }
 

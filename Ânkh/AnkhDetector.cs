@@ -15,6 +15,13 @@ namespace Ânkh
         private int _match;
 
         /// <summary>
+        /// String to get prefix template based on file before the number match
+        /// </summary>
+        private string? _prefix;
+
+        public string Prefix => _prefix;
+
+        /// <summary>
         /// Regex to detect all numeric values in filename
         /// </summary>
         /// <returns></returns>
@@ -30,7 +37,6 @@ namespace Ânkh
         public void SetupRegex(AnkhFile file)
         {
             MatchCollection matches = NumericRegex().Matches(file.Name);
-
             if (!matches[0].Success)
             {
                 throw new MatchRegexException(file);
@@ -39,6 +45,7 @@ namespace Ânkh
             Utils.WriteLine("List of matches from file: ", ConsoleColor.Yellow, $"'{file.Name}'", ConsoleColor.White);
 
             _match = validateMatch(matches);
+            setPrefixTemplate(file);
 
             Utils.WriteLine("You select this match : ", ConsoleColor.Yellow, $"'{matches[_match]}'", ConsoleColor.White);
         }
@@ -65,8 +72,20 @@ namespace Ânkh
         private static int validateMatch(MatchCollection matches)
         {
             Utils.ShowRegexPattern(matches);
-
             return AnkhUser.askMatch(matches.Count) - 1;
+        }
+
+        /// <summary>
+        /// Get prefix template to get default choice based on first file on the list 
+        /// and the match found in method 'SetupRegex' 
+        /// </summary>
+        /// <param name="file">File to extract prefix template</param>
+        /// <returns>template of file</returns>
+        private void setPrefixTemplate(AnkhFile file)
+        {
+            string stopAt = NumericRegex().Matches(file.Name).ElementAt(_match).Value;
+            int charLocation = file.Name.IndexOf(stopAt, StringComparison.Ordinal);
+            _prefix = file.Name.Substring(0, charLocation).Replace(".", " ");
         }
     }
 }
