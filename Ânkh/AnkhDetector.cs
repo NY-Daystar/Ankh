@@ -19,7 +19,7 @@ namespace Ânkh
         /// </summary>
         private string? _prefix;
 
-        public string Prefix => _prefix;
+        public string Prefix => _prefix ?? string.Empty;
 
         /// <summary>
         /// Regex to detect all numeric values in filename
@@ -71,13 +71,26 @@ namespace Ânkh
         /// <returns>int of the match</returns>
         private static int validateMatch(MatchCollection matches)
         {
-            Utils.ShowRegexPattern(matches);
-            return AnkhUser.askMatch(matches.Count) - 1;
+            while (true)
+            {
+                Utils.ShowRegexPattern(matches);
+                int choice = 0;
+                try
+                {
+                    choice = AnkhUser.askMatch(matches.Count) - 1;
+                }
+                catch (FormatException)
+                {
+                    Utils.WriteLine(ConsoleColor.Red, $"Incorrect choice ({choice}), please choose between 1-{matches.Count}", ConsoleColor.White);
+                    continue;
+                }
+                return choice;
+            }
         }
 
         /// <summary>
-        /// Get prefix template to get default choice based on first file on the list 
-        /// and the match found in method 'SetupRegex' 
+        /// Get prefix template to get default choice based on first file on the list
+        /// and the match found in method 'SetupRegex'
         /// </summary>
         /// <param name="file">File to extract prefix template</param>
         /// <returns>template of file</returns>
