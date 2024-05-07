@@ -3,7 +3,7 @@
 /// <summary>
 /// Exception generate when no regex match
 /// </summary>
-internal class MatchRegexException : Exception
+public class MatchRegexException : Exception
 {
     public MatchRegexException(AnkhFile file) :
         base($"No regex match for this file : {file}")

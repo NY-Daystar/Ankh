@@ -49,7 +49,6 @@ internal static class Ankh
         {
             Console.WriteLine("No template file set");
             Exit();
-            Environment.Exit(0);
         }
         Console.WriteLine("---------------------");
 

@@ -38,18 +38,17 @@ internal static class AnkhUser
         {
             Console.Write($"Select the appropriate match between (1/{range}) : ");
             string userLine = Console.ReadLine() ?? string.Empty;
-            int match;
+            int match = 0;
             if (int.TryParse(userLine, out match))
             {
                 if (match > 0 && match <= range)
                 {
                     return match;
                 }
-                else
-                {
-                    Console.Write($"\nYou type '{match}'. Please ");
-                }
+
+                Console.Write($"\nYou type '{match}'. Please ");
             }
+
             Utils.WriteLine(ConsoleColor.Red, $"Incorrect choice ({match}), please choose between 1-{range}", ConsoleColor.White);
         }
     }
@@ -75,7 +74,7 @@ internal static class AnkhUser
                 Console.WriteLine();
                 return false;
             }
-            
+
             Console.WriteLine($"\nYou type '{key}'. Please choose 'y' (Yes) or 'n' (No)");
         }
     }
