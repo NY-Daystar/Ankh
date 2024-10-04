@@ -82,6 +82,14 @@ $ git clone git@github.com:NY-Daystar/Ankh.git
 4. Rebuild solution
 5. F5 to launch project in Debug mode
 
+## For developpers
+
+You can activate git hooks with this command
+
+```bash
+git config --global core.hooksPath .githooks
+```
+
 ## Contact
 
 -   To make a pull request: https://github.com/NY-Daystar/ankh/pulls
