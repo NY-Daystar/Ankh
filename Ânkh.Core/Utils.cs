@@ -1,7 +1,9 @@
 ﻿using ConsoleTables;
+using System.ComponentModel;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace Ânkh;
+namespace Ânkh.Core;
 
 /// <summary>
 /// Utilitaries method for Ankh Application
@@ -25,7 +27,7 @@ public static class Utils
     /// <param name="files"></param>
     public static void ShowFiles(IEnumerable<AnkhFile> files)
     {
-        string[] headers = new[] { "N°", "Name", };
+        string[] headers = ["N°", "Name",];
 
         ConsoleTable table = new(headers);
         foreach (AnkhFile file in files)
@@ -42,7 +44,7 @@ public static class Utils
     /// <param name="files">Files data to compare</param>
     public static void CompareFiles(IEnumerable<AnkhFile> files)
     {
-        string[] headers = new[] { "N°", "Old Name", "New Name", };
+        string[] headers = ["N°", "Old Name", "New Name",];
 
         ConsoleTable table = new(headers);
         foreach (AnkhFile file in files)
@@ -59,7 +61,7 @@ public static class Utils
     /// <param name="matches">list of pattern matches</param>
     public static void ShowRegexPattern(MatchCollection matches)
     {
-        string[] headers = new[] { "N°", "Pattern", };
+        string[] headers = ["N°", "Pattern",];
 
         ConsoleTable table = new(headers);
 
@@ -70,6 +72,19 @@ public static class Utils
             _ = table.AddRow(id, match.Value);
         }
         table.Write(Format.Alternative);
+    }
+
+    public static string StringValueOfEnum(Enum value)
+    {
+        var fi = value.GetType().GetField(value.ToString());
+        if (fi is null)
+            return string.Empty;
+        DescriptionAttribute[] attributes = (DescriptionAttribute[])fi.GetCustomAttributes(typeof(DescriptionAttribute), false);
+        if (attributes.Length > 0)
+        {
+            return attributes[0].Description;
+        }
+            return value.ToString();
     }
 
     /// <summary>

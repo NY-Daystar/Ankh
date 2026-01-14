@@ -1,7 +1,7 @@
-﻿using Ânkh.Exceptions;
+﻿using Ânkh.Core.Exceptions;
 using System.Text.RegularExpressions;
 
-namespace Ânkh;
+namespace Ânkh.Core;
 
 /// <summary>
 /// Handler for regex file
@@ -44,8 +44,8 @@ public partial class AnkhDetector
 
         Utils.WriteLine("List of matches from file: ", ConsoleColor.Yellow, $"'{file.Name}'", ConsoleColor.White);
 
-        _match = validateMatch(matches);
-        setPrefixTemplate(file);
+        _match = ValidateMatch(matches);
+        SetPrefixTemplate(file);
 
         Utils.WriteLine("You select this match : ", ConsoleColor.Yellow, $"'{matches[_match]}'", ConsoleColor.White);
     }
@@ -69,10 +69,10 @@ public partial class AnkhDetector
     /// </summary>
     /// <param name="matches">List of matches</param>
     /// <returns>int of the match</returns>
-    private static int validateMatch(MatchCollection matches)
+    private static int ValidateMatch(MatchCollection matches)
     {
         Utils.ShowRegexPattern(matches);
-        return AnkhUser.askMatch(matches.Count) - 1;
+        return AnkhUser.AskMatch(matches.Count) - 1;
     }
 
     /// <summary>
@@ -81,10 +81,18 @@ public partial class AnkhDetector
     /// </summary>
     /// <param name="file">File to extract prefix template</param>
     /// <returns>template of file</returns>
-    private void setPrefixTemplate(AnkhFile file)
+    private void SetPrefixTemplate(AnkhFile file)
     {
         string stopAt = NumericRegex().Matches(file.Name).ElementAt(_match).Value;
         int charLocation = file.Name.IndexOf(stopAt, StringComparison.Ordinal);
-        _prefix = file.Name.Substring(0, charLocation).Replace(".", " ");
+        _prefix = file.Name[..charLocation].Replace(".", " ");
+    }
+
+    public void ApplyRandomizer(IEnumerable<AnkhFile> files)
+    {
+        files.ToList().ForEach(file =>
+        {
+            file.NewName = Guid.NewGuid().ToString();
+        });
     }
 }

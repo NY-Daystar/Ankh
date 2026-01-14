@@ -1,9 +1,33 @@
-﻿using System.Text.RegularExpressions;
+﻿namespace Ânkh.Core;
 
-namespace Ânkh;
-
-internal static class AnkhUser
+public static class AnkhUser
 {
+    public static AnkhAction AskAction()
+    {
+        var actions = Enum.GetValues<AnkhAction>();
+
+        Console.Write("What do you want to do ?");
+        Console.WriteLine();
+        while (true)
+        {
+            for (var index = 0; index < actions.Length; index++)
+            {
+                Console.WriteLine($"\t [{index + 1}] - {Utils.StringValueOfEnum(actions[index])}");
+            }
+
+            //string userLine = Console.ReadLine() ?? string.Empty;
+            char key = Console.ReadKey().KeyChar;
+            
+            if (int.TryParse(key.ToString(), out int match) && match > 0 && match <= actions.Length)
+            {
+                return actions[match - 1];
+            }
+            Console.WriteLine();
+            Utils.WriteLine(ConsoleColor.Red, $"Incorrect choice ({match}), " +
+                $"please choose between 1-{actions.Length}", ConsoleColor.White);
+        }
+    }
+
     /// <summary>
     /// Ask in Console folder path
     /// </summary>
@@ -32,14 +56,13 @@ internal static class AnkhUser
     /// Select the good match proposed
     /// </summary>
     /// <returns>The number of the good match to setup new files names</returns>
-    public static int askMatch(int range)
+    public static int AskMatch(int range)
     {
         while (true)
         {
             Console.Write($"Select the appropriate match between (1/{range}) : ");
             string userLine = Console.ReadLine() ?? string.Empty;
-            int match = 0;
-            if (int.TryParse(userLine, out match))
+            if (int.TryParse(userLine, out int match))
             {
                 if (match > 0 && match <= range)
                 {
