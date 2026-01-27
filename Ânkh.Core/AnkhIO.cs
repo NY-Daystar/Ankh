@@ -1,12 +1,12 @@
-﻿using Ânkh.Exceptions;
+﻿using Ânkh.Core.Exceptions;
 using System.Text.RegularExpressions;
 
-namespace Ânkh;
+namespace Ânkh.Core;
 
 /// <summary>
 /// IO methods to get files data and to rename it
 /// </summary>
-internal static class AnkhIO
+public static partial class AnkhIO
 {
     /// <summary>
     /// Get files list of a folder and convert it into AnkhFile
@@ -30,7 +30,7 @@ internal static class AnkhIO
         IEnumerable<string> files = Directory.GetFiles(folder, "*", SearchOption.TopDirectoryOnly);
 
         // Order in natural number
-        files = files.OrderBy(file => Regex.Replace(file, @"\d+", match => match.Value.PadLeft(4, '0')));
+        files = files.OrderBy(file => RegexNumber().Replace(file, match => match.Value.PadLeft(4, '0')));
 
         return AnkhFile.Load(files);
     }
@@ -46,4 +46,7 @@ internal static class AnkhIO
             File.Move(file.FilePath, file.NewFilePath);
         }
     }
+
+    [GeneratedRegex(@"\d+")]
+    private static partial Regex RegexNumber();
 }

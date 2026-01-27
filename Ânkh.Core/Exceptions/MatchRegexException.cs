@@ -1,9 +1,9 @@
-﻿namespace Ânkh.Exceptions;
+﻿namespace Ânkh.Core.Exceptions;
 
 /// <summary>
 /// Exception generate when no regex match
 /// </summary>
-public class MatchRegexException : Exception
+public class MatchRegexException : FormatException
 {
     public MatchRegexException(AnkhFile file) :
         base($"No regex match for this file : {file}")
@@ -13,7 +13,7 @@ public class MatchRegexException : Exception
     {
     }
 
-    public MatchRegexException(string? message, Exception? innerException) : base(message, innerException)
+    public MatchRegexException(string? message, FormatException? innerException) : base(message, innerException)
     {
     }
 }

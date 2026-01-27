@@ -1,4 +1,4 @@
-﻿namespace Ânkh;
+﻿namespace Ânkh.Core;
 
 /// <summary>
 /// File to rename with its data (name, parent folder, extension, etc...)
@@ -92,7 +92,7 @@ public class AnkhFile
     /// <returns></returns>
     public static IEnumerable<AnkhFile> Load(IEnumerable<string> filePaths)
     {
-        List<AnkhFile> ankhFiles = new();
+        List<AnkhFile> ankhFiles = [];
 
         foreach (string filePath in filePaths)
         {

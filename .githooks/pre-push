@@ -55,7 +55,7 @@ function check() {
         ;;
 
     'compile')
-        [ $result_code != 0 ] && log_color "Error: Impossible to builde the project $(${SLN_PATH}).\ngit push canceled" "red" && exit 1
+        [ $result_code != 0 ] && log_color "Error: Impossible to build the project $(${SLN_PATH}).\ngit push canceled" "red" && exit 1
         ;;
 
     'unittest')
