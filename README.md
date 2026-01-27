@@ -37,8 +37,8 @@ Source code analysed with [DeepSource](https://deepsource.com/) and [Codacy](htt
 
 ## How to use
 
-1. Download Ankh project from [this link](https://github.com/NY-Daystar/Ankh/releases/download/v1.2.0/AnkhSetup.exe)
-    > If not working you can download [portable version](https://github.com/NY-Daystar/Ankh/releases/download/v1.1.0/AnkhPortable.zip)
+1. Download Ankh project from [this link](https://github.com/NY-Daystar/Ankh/releases/download/v1.2.0/AnkhSetup.msi)
+    > If not working you can download [portable version](https://github.com/NY-Daystar/Ankh/releases/download/v1.2.0/AnkhPortable.zip)
 2. Install .msi file
 3. Launch `Ânkh.exe` - The project ask you to choose a folder in your computer to rename files. - It will list folder files and submit several renaming. - After choosing one the application rename files automatically
 
